@@ -14,19 +14,11 @@ class RedisClient {
   }
 
   async get(key) {
-    this.client.get(key, (error, value) => {
-      if (!error) {
-        return value;
-      }
-    });
+    this.client.get(key, (error, value) => value);
   }
 
   async set(key, value, duration) {
-    this.client.setex(key, duration, value, (error) => {
-      if (error) {
-        return error;
-      }
-    });
+    this.client.setex(key, duration, value, (error) => error);
   }
 
   async del(key) {
