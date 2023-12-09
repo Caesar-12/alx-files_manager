@@ -2,7 +2,10 @@ const redis = require('redis');
 
 class RedisClient {
   constructor() {
-    this.client = redis.createClient();
+    this.client = redis.createClient({
+      host: '127.0.0.1',
+      port: 6379,
+    });
 
     this.client.on('error', (error) => {
       console.error(error);
